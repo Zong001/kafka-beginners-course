@@ -32,19 +32,23 @@ public class ProducerDemoWithCallback {
         properties.setProperty("key.serializer", StringSerializer.class.getName());
         properties.setProperty("value.serializer", StringSerializer.class.getName());
 
+        properties.setProperty("batch.size","400");
+
+        //properties.setProperty("partioner")
+
 
 
         //create Prod
 
         KafkaProducer<String,String> producer = new KafkaProducer<>(properties);
 
-
-        for (int i = 0; i < 10;i++){
+for (int j = 0; j < 10;j++) {
+    for (int i = 0; i < 30; i++) {
 
 
         //create Prod Record
 
-        ProducerRecord<String,String> producerRecord = new ProducerRecord<>("demo_java","hello world " + i);
+        ProducerRecord<String, String> producerRecord = new ProducerRecord<>("demo_java", "hello world " + i);
 
         //send data
 
@@ -60,14 +64,20 @@ public class ProducerDemoWithCallback {
                             "Offset " + recordMetadata.offset() + "\n" +
                             "TimeStamp " + recordMetadata.timestamp() + "\n"
                     );
-                }else {
-                    log.error("error wile producing" ,e);
+                } else {
+                    log.error("error wile producing", e);
                 }
             }
         });
 
-        }
+    }
 
+    try {
+        Thread.sleep(500);
+    } catch (InterruptedException e) {
+        throw new RuntimeException(e);
+    }
+}
 
         // tell the prod to send all data and block until done -- synchronous
 
