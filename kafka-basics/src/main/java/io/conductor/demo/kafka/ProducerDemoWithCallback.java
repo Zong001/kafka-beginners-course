@@ -31,7 +31,7 @@ public class ProducerDemoWithCallback {
 
         properties.setProperty("batch.size","400");
 
-        properties.setProperty("partioner.class", RoundRobinPartitioner.class.getName());
+        properties.setProperty("partitioner.class", RoundRobinPartitioner.class.getName());
 
 
 
