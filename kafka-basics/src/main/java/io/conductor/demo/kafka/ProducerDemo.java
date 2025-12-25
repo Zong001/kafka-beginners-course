@@ -1,5 +1,7 @@
 package io.conductor.demo.kafka;
 
+import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,8 +34,27 @@ public class ProducerDemo {
 
         //create Prod
 
+        KafkaProducer<String,String> producer = new KafkaProducer<>(properties);
+
+        //create Prod Record
+
+        ProducerRecord<String,String> producerRecord = new ProducerRecord<>("demo_java","hello world");
+
         //send data
 
+        producer.send(producerRecord);
+
+        // tell the prod to send all data and block until done -- synchronous
+
+        producer.flush();
+
         //flush and close Prod
+
+        producer.close();
     }
+
+    //
+    //
+    //
+    // kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic demo_java  --from-beginning
 }
