@@ -1,9 +1,6 @@
 package io.conductor.demo.kafka;
 
-import org.apache.kafka.clients.producer.Callback;
-import org.apache.kafka.clients.producer.KafkaProducer;
-import org.apache.kafka.clients.producer.ProducerRecord;
-import org.apache.kafka.clients.producer.RecordMetadata;
+import org.apache.kafka.clients.producer.*;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,7 +31,7 @@ public class ProducerDemoWithCallback {
 
         properties.setProperty("batch.size","400");
 
-        //properties.setProperty("partioner")
+        properties.setProperty("partioner.class", RoundRobinPartitioner.class.getName());
 
 
 
