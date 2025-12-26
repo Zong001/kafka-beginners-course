@@ -29,9 +29,9 @@ public class ProducerDemoWithCallback {
         properties.setProperty("key.serializer", StringSerializer.class.getName());
         properties.setProperty("value.serializer", StringSerializer.class.getName());
 
-        properties.setProperty("batch.size","400");
-
-        properties.setProperty("partitioner.class", RoundRobinPartitioner.class.getName());
+//        properties.setProperty("batch.size","400");
+//
+//        properties.setProperty("partitioner.class", RoundRobinPartitioner.class.getName());
 
 
 
