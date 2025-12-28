@@ -77,6 +77,9 @@ public class ConsumerDemoWithShutdown {
 //                log.info("polling");
 
                 ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(1000));
+//                	auto.commit.interval.ms = 5000
+//                enable.auto.commit = true
+
 
                 for (ConsumerRecord<String, String> record : records) {
                     log.info("key: " + record.key() + ", value: " + record.value() + ", Partition: " + record.partition() + ", Offset: " + record.offset());
