@@ -74,7 +74,7 @@ public class ConsumerDemoWithShutdown {
             // poll for data
 
             while (true) {
-                log.info("polling");
+//                log.info("polling");
 
                 ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(1000));
 
