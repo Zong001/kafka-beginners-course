@@ -25,6 +25,7 @@ public class ConsumerDemoCooperative {
 
         Properties properties = new Properties();
 
+
         //local host
         properties.setProperty("bootstrap.servers", "127.0.0.1:9092");
 
