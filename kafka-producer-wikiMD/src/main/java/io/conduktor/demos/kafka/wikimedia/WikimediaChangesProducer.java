@@ -34,6 +34,7 @@ public class WikimediaChangesProducer {
         properties.setProperty("value.serializer", StringSerializer.class.getName());
 
 
+        // set safe prod configs (kafka <= 2.8)
         //create Prod
 
         KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
