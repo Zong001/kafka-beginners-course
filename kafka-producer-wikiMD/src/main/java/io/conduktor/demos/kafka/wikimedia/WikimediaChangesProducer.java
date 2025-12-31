@@ -69,6 +69,6 @@ public class WikimediaChangesProducer {
 
         // prod 10 min
 
-        TimeUnit.MINUTES.sleep(10);
+        TimeUnit.SECONDS.sleep(5);
     }
 }
