@@ -6,6 +6,7 @@ import com.launchdarkly.eventsource.EventSource;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 
 import java.net.URI;
@@ -35,6 +36,12 @@ public class WikimediaChangesProducer {
 
 
         // set safe prod configs (kafka <= 2.8)
+
+        properties.setProperty(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, "true");
+        properties.setProperty(ProducerConfig.ACKS_CONFIG,"all");// same as -1
+        properties.setProperty(ProducerConfig.RETRIES_CONFIG,Integer.toString(Integer.MAX_VALUE));// same as -1
+
+
         //create Prod
 
         KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
