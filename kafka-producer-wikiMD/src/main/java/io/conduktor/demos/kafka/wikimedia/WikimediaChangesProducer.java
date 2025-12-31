@@ -8,6 +8,7 @@ import org.apache.kafka.common.serialization.StringSerializer;
 
 import java.net.URI;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 public class WikimediaChangesProducer {
     public static void main(String[] args) {
@@ -37,7 +38,7 @@ public class WikimediaChangesProducer {
 
         String topic = "wikimedia.recentchange";
 
-        BackgroundEventHandler backgroundEventHandler = TODO;
+        BackgroundEventHandler backgroundEventHandler = new WikimediaChangeHandler(topic,producer);
 
         String url = "https://stream.wikimedia.org/v2/stream/recentchange";
         BackgroundEventSource.Builder builder =  new BackgroundEventSource.Builder(backgroundEventHandler,new EventSource.Builder(URI.create(url)));
@@ -46,5 +47,9 @@ public class WikimediaChangesProducer {
         // start the producer in another thread
 
         eventSource.start();
+
+        // prod 10 min
+
+        TimeUnit.MINUTES.sleep(10);
     }
 }
