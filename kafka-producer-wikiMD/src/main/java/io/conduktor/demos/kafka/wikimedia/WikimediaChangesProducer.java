@@ -44,6 +44,12 @@ public class WikimediaChangesProducer {
                 Integer.toString(Integer.MAX_VALUE)
         );// same as -1
 
+//        set high Throughput prod config
+
+        properties.setProperty(ProducerConfig.LINGER_MS_CONFIG,"20");
+        properties.setProperty(ProducerConfig.BATCH_SIZE_CONFIG,
+                Integer.toString(32 * 1024));
+        properties.setProperty(ProducerConfig.COMPRESSION_TYPE_CONFIG,"snappy");
 
         //create Prod
 
