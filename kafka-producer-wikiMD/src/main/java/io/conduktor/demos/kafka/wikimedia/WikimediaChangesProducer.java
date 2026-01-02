@@ -39,7 +39,10 @@ public class WikimediaChangesProducer {
 
         properties.setProperty(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, "true");
         properties.setProperty(ProducerConfig.ACKS_CONFIG,"all");// same as -1
-        properties.setProperty(ProducerConfig.RETRIES_CONFIG,Integer.toString(Integer.MAX_VALUE));// same as -1
+        properties.setProperty(
+                ProducerConfig.RETRIES_CONFIG,
+                Integer.toString(Integer.MAX_VALUE)
+        );// same as -1
 
 
         //create Prod
