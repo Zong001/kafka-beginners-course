@@ -25,6 +25,9 @@ dependencies {
 
     // https://mvnrepository.com/artifact/com.launchdarkly/okhttp-eventsource
     implementation 'com.launchdarkly:okhttp-eventsource:2.5.0'
+
+    // 强制升级 snappy-java（选一个较新的版本即可）
+    implementation "org.xerial.snappy:snappy-java:1.1.10.5"
 }
 
 test {
